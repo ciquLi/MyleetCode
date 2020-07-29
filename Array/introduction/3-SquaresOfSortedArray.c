@@ -1,7 +1,5 @@
 Given an array of integers A sorted in non-decreasing order, return an array of the squares of each number, also in sorted non-decreasing order.
 
- 
-
 Example 1:
 
 Input: [-4,-1,0,3,10]
@@ -18,3 +16,31 @@ Note:
 -10000 <= A[i] <= 10000
 A is sorted in non-decreasing order.
 
+ //may cause time limited
+ 
+ int* sortedSquares(int* A, int ASize, int* returnSize){
+    *returnSize = ASize;
+    int *B = malloc(sizeof(int) * ASize);
+    for (int i=0;i<ASize;i++)
+    {
+        B[i] = A[i]*A[i];
+        printf("%d\n",B[i]);
+    }
+    
+    
+
+for (int i=0;i<ASize;i++){
+        for(int j=i+1; j<ASize;j++)
+        {
+            int tmp = B[i];
+            if(tmp>B[j])
+            {
+                B[i]=B[j];
+                B[j]=tmp;
+            }
+        }
+    }
+    
+   
+    return B;
+}
