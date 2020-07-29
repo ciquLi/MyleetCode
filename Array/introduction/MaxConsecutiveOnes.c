@@ -31,17 +31,3 @@ int findMaxConsecutiveOnes(int* nums, int numsSize){
     return max_len;
 }
 
-python3
-class Solution:
-    def findMaxConsecutiveOnes(self, nums: List[int]) -> int:
-        length = 0
-        max_len = 0
-        for i in range(len(nums)):
-            tmp = nums[i]
-            if tmp == 1:
-                length += 1
-            else:
-                length = 0
-            if max_len < length:
-                    max_len = length
-        return max_len
