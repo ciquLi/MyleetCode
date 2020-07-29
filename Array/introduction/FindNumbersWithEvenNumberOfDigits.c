@@ -41,5 +41,3 @@ int findNumbers(int* nums, int numsSize){
     }
     return count;
 }
-
-python3
