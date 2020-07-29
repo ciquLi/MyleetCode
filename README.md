@@ -1,5 +1,6 @@
 # MyleetCode
 LeetCode codes, c and python3
+
 Introduction to Data Structure
 
 1.Arrays
