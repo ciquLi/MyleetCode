@@ -18,29 +18,57 @@ A is sorted in non-decreasing order.
 
  //may cause time limited
  
- int* sortedSquares(int* A, int ASize, int* returnSize){
+int* sortedSquares(int* A, int ASize, int* returnSize){
+    void MergeSort(int array[], int begin, int end, int temp[]);
     *returnSize = ASize;
-    int *B = malloc(sizeof(int) * ASize);
+    //int *B = malloc(sizeof(int) * ASize);
     for (int i=0;i<ASize;i++)
     {
-        B[i] = A[i]*A[i];
-        printf("%d\n",B[i]);
+        A[i] = A[i]*A[i];
     }
-    
-    
-
-for (int i=0;i<ASize;i++){
-        for(int j=i+1; j<ASize;j++)
+    int *temp = (int*)malloc(sizeof(int) * ASize);
+    MergeSort(A, 0, ASize-1, temp);
+    return A;
+}
+///mergesort
+void mergearray(int array[], int begin, int mid, int end, int temp[])
+{
+    int i = begin, j = mid+1;
+    int m = mid, n = end;
+    int k = 0;
+    while (i<=m && j<=n)    //
+    {
+        if (array[i]<=array[j])
         {
-            int tmp = B[i];
-            if(tmp>B[j])
-            {
-                B[i]=B[j];
-                B[j]=tmp;
-            }
+            temp[k++] = array[i++];
+        }
+        else
+        {
+            temp[k++] = array[j++];
         }
     }
-    
-   
-    return B;
+    while (i<=m)
+    {
+        temp[k++] = array[i++];
+    }
+    while (j<=n)
+    {
+        temp[k++] = array[j++];
+    }
+    for (int l = 0; l<k; l++)    //substitute part of array with sorted temp
+    {
+        array[begin+l] = temp[l];
+    }
+}
+
+void MergeSort(int array[], int begin, int end, int temp[])
+{
+    void mergearray(int array[], int begin, int mid, int end, int temp[]);
+    if (begin < end)
+    {
+        int mid = (begin+end)/2;
+        MergeSort(array, begin, mid, temp);
+        MergeSort(array, mid+1, end, temp);
+        mergearray(array, begin, mid, end, temp);
+    }
 }
